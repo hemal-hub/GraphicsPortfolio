@@ -1030,15 +1030,53 @@ function fileToDataURL(file, maxW=1200, quality=.82){
     reader.readAsDataURL(file);
   });
 }
-async function storeImage(file, path){
-  if (FS && storage){
-    try {
-      const ref = storage.ref().child(path);
-      await ref.put(file);
-      return await ref.getDownloadURL();
-    } catch(e){ console.warn("Storage upload failed, falling back to local.", e); }
+const CLOUDINARY_CLOUD_NAME = "cbrpj9n9";
+const CLOUDINARY_UPLOAD_PRESET = "hemal_portfolio";
+
+async function storeImage(file) {
+  if (!file) throw new Error("No image selected.");
+
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp"
+  ];
+
+  if (!allowedTypes.includes(file.type)) {
+    throw new Error("Only JPG, PNG and WEBP images are allowed.");
   }
-  return await fileToDataURL(file);
+
+  const maxSize = 10 * 1024 * 1024; // 10 MB
+
+  if (file.size > maxSize) {
+    throw new Error("Image must be smaller than 10MB.");
+  }
+
+  const formData = new FormData();
+
+  formData.append("file", file);
+  formData.append(
+    "upload_preset",
+    CLOUDINARY_UPLOAD_PRESET
+  );
+
+  const response = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+    {
+      method: "POST",
+      body: formData
+    }
+  );
+
+  const data = await response.json();
+
+  if (!response.ok || !data.secure_url) {
+    throw new Error(
+      data.error?.message || "Cloudinary image upload failed."
+    );
+  }
+
+  return data.secure_url;
 }
 
 /* ---------- Data layer ---------- */
