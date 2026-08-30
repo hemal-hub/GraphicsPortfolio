@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hemal Graphics — Premium Graphic Designer & Brand Identity Specialist</title>
+<meta name="description" content="Hemal Graphics creates premium logos, brand identities, social media graphics, YouTube thumbnails, flyers and banners for ambitious brands and creators." />
+<meta name="keywords" content="Hemal Graphics, graphic designer, logo design, branding, social media design, YouTube thumbnails, flyer design, banner design, brand identity" />
+<meta name="author" content="Hemal Graphics" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://hemalgraphics.com/" />
+<meta property="og:title" content="Hemal Graphics — Creative Design That Builds Brands" />
+<meta property="og:description" content="Premium graphic design, branding and visual content for businesses and creators." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://hemalgraphics.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Hemal Graphics — Creative Design That Builds Brands" />
+<meta name="twitter:description" content="Premium graphic design, branding and visual content for businesses and creators." />
+<meta name="theme-color" content="#ffffff" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Hemal Graphics",
+  "description": "Premium graphic design studio specialising in logo design, branding, social media design, YouTube thumbnails and flyer & banner design.",
+  "url": "https://hemalgraphics.com/",
+  "priceRange": "$$",
+  "founder": { "@type": "Person", "name": "Hemal" },
+  "makesOffer": [
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Logo Design"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Brand Identity"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Social Media Design"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"YouTube Thumbnail Design"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Flyer & Banner Design"}}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
+<style>
+:root{
+  --primary:#5b5cf0;
+  --primary-dark:#4243cf;
+  --purple:#a055f5;
+  --blue:#2e9cf7;
+  --ink:#14142e;
+  --muted:#6b6c85;
+  --line:#e9e9f4;
+  --surface:#f7f8fd;
+  --white:#ffffff;
+  --grad:linear-gradient(120deg,#445cf6,#7c4def 55%,#b84ddb);
+  --shadow:0 24px 60px rgba(70,70,150,.13);
+  --shadow-small:0 12px 34px rgba(62,63,140,.10);
+  --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{font-family:"Manrope",sans-serif;color:var(--ink);background:#fff;line-height:1.65;overflow-x:hidden}
+body.no-scroll{overflow:hidden}
+img{display:block;max-width:100%}
+button,input,textarea,select{font:inherit;color:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+::selection{background:#dcdcff;color:var(--ink)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#f1f2fa}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#7a7cf0,#a55ef0);border-radius:20px;border:2px solid #f1f2fa}
+
+.container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+.section{padding:112px 0;position:relative}
+.section-soft{background:linear-gradient(150deg,#fafaff 0%,#f3f7ff 55%,#fdf5ff 100%)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--primary);font-size:.78rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:16px}
+.eyebrow::before{content:"";width:28px;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:2px}
+.section-title{font-size:clamp(2.1rem,4vw,3.5rem);line-height:1.12;letter-spacing:-.045em;font-weight:800;max-width:720px}
+.section-subtitle{color:var(--muted);font-size:1.05rem;max-width:620px;margin-top:18px}
+.gradient-text{background:linear-gradient(115deg,#315efb,#7959ec 50%,#bd45d8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:600}
+
+.btn{border:0;min-height:52px;padding:0 24px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:750;cursor:pointer;transition:.3s cubic-bezier(.22,1,.36,1);font-size:.95rem}
+.btn-primary{color:#fff;background:linear-gradient(120deg,#445cff,#7b54e9);box-shadow:0 14px 28px rgba(77,79,225,.25)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(77,79,225,.35)}
+.btn-outline{border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.btn-outline:hover{border-color:#b9baf7;color:var(--primary);transform:translateY(-3px);box-shadow:var(--shadow-small)}
+.btn-light{background:#fff;color:var(--ink);box-shadow:var(--shadow-small)}
+.btn-light:hover{transform:translateY(-3px)}
+.btn-small{min-height:42px;padding:0 17px;border-radius:11px;font-size:.87rem}
+.icon{width:19px;height:19px;flex-shrink:0}
+
+/* ---------- Reveal animations ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- Nav ---------- */
+.nav{height:78px;position:fixed;inset:0 0 auto;z-index:100;background:rgba(255,255,255,.8);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(233,233,244,.8);transition:.3s}
+.nav.scrolled{box-shadow:0 10px 30px rgba(50,50,100,.08)}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em;font-size:1.08rem}
+.logo-mark{width:40px;height:40px;border-radius:13px;background:linear-gradient(140deg,#4068ff,#9a4de1);color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.05rem;box-shadow:0 9px 22px rgba(75,78,225,.3)}
+.logo span small{display:block;font-size:.54rem;color:var(--muted);letter-spacing:.17em;margin-top:-4px;font-weight:700}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a:not(.btn){color:#54556a;font-size:.9rem;font-weight:650;transition:.2s;position:relative}
+.nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--grad);border-radius:2px;transition:.3s}
+.nav-links a:not(.btn):hover{color:var(--primary)}
+.nav-links a:not(.btn):hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--primary)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.menu-btn{display:none;width:44px;height:44px;border:1.5px solid var(--line);background:#fff;border-radius:12px;cursor:pointer;place-items:center}
+.mobile-menu{position:fixed;inset:78px 0 auto;z-index:99;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow);padding:10px 22px 26px;transform:translateY(-115%);transition:.45s cubic-bezier(.22,1,.36,1)}
+.mobile-menu.open{transform:none}
+.mobile-menu a{display:flex;align-items:center;justify-content:space-between;padding:14px 4px;font-weight:700;border-bottom:1px solid #f1f1f8}
+.mobile-menu a:last-child{border:0}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;padding:158px 0 80px;display:flex;align-items:center;isolation:isolate;background:
+  radial-gradient(circle at 86% 16%,rgba(168,112,255,.16),transparent 30%),
+  radial-gradient(circle at 12% 42%,rgba(55,163,255,.13),transparent 32%),
+  linear-gradient(180deg,#fff,#fbfbff)}
+.hero::before{content:"";position:absolute;z-index:-1;inset:0;background-image:radial-gradient(#7475c8 1px,transparent 1px);background-size:28px 28px;opacity:.09;-webkit-mask-image:linear-gradient(to bottom,#000,transparent 72%);mask-image:linear-gradient(to bottom,#000,transparent 72%)}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);z-index:-1;opacity:.55;animation:blobFloat 9s ease-in-out infinite alternate}
+.blob-1{width:340px;height:340px;background:radial-gradient(circle,#c9c9ff,transparent 65%);top:6%;right:-70px}
+.blob-2{width:300px;height:300px;background:radial-gradient(circle,#d9f0ff,transparent 65%);bottom:4%;left:-90px;animation-delay:2s}
+@keyframes blobFloat{from{transform:translate(0,0) scale(1)}to{transform:translate(24px,30px) scale(1.08)}}
+.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;align-items:center;gap:70px}
+.availability{display:inline-flex;align-items:center;gap:9px;border:1px solid #e2e4f6;padding:8px 15px;border-radius:100px;color:#55566b;background:rgba(255,255,255,.85);font-size:.79rem;font-weight:750;margin-bottom:24px;box-shadow:0 6px 18px rgba(80,80,160,.07)}
+.availability i{width:8px;height:8px;background:#2dcc91;border-radius:50%;box-shadow:0 0 0 5px rgba(45,204,145,.15);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(45,204,145,.18)}50%{box-shadow:0 0 0 8px rgba(45,204,145,.06)}}
+.hero h1{font-size:clamp(2.9rem,6vw,5.4rem);line-height:1;letter-spacing:-.055em;font-weight:800;max-width:780px}
+.hero h1 em{font-family:"Playfair Display",serif;font-weight:600;letter-spacing:-.02em}
+.hero-copy{font-size:1.08rem;color:var(--muted);max-width:580px;margin:26px 0 32px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.hero-proof{margin-top:40px;display:flex;align-items:center;gap:18px;color:var(--muted);font-size:.84rem;font-weight:650}
+.avatar-stack{display:flex}
+.avatar-stack span{width:38px;height:38px;border-radius:50%;border:3px solid #fff;display:grid;place-items:center;font-size:.68rem;font-weight:800;color:#fff;margin-left:-10px;box-shadow:0 5px 14px rgba(60,60,130,.18)}
+.avatar-stack span:first-child{margin:0}
+.stars{color:#ffad33;letter-spacing:2px;font-size:.95rem}
+.hero-visual{position:relative;max-width:470px;margin-left:auto;width:100%}
+.portrait-frame{aspect-ratio:.82;overflow:hidden;border-radius:190px 190px 32px 32px;padding:10px;background:linear-gradient(150deg,#dbeaff,#ecdfff 60%,#ffe9f6);box-shadow:0 40px 90px rgba(69,65,141,.2)}
+.portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:180px 180px 24px 24px}
+.float-card{position:absolute;padding:14px 18px;border-radius:16px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;font-size:.82rem;font-weight:750;animation:floaty 5.5s ease-in-out infinite alternate}
+.float-card small{display:block;color:var(--muted);font-weight:600;font-size:.72rem}
+.float-card .fc-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#fff;flex-shrink:0}
+.fc-1{top:9%;left:-46px}
+.fc-2{bottom:16%;right:-34px;animation-delay:1.4s}
+@keyframes floaty{from{transform:translateY(-8px)}to{transform:translateY(10px)}}
+.spin-badge{position:absolute;bottom:-26px;left:-24px;width:118px;height:118px;background:#fff;border-radius:50%;box-shadow:var(--shadow);display:grid;place-items:center}
+.spin-badge svg{position:absolute;inset:0;animation:spin 14s linear infinite}
+.spin-badge .spin-icon{color:var(--primary)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Marquee ---------- */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;overflow:hidden;padding:20px 0}
+.marquee-track{display:flex;gap:0;width:max-content;animation:scrollX 30s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{display:inline-flex;align-items:center;gap:26px;padding:0 26px;font-weight:800;font-size:1.02rem;letter-spacing:.02em;color:#3a3b55;white-space:nowrap}
+.marquee-track .icon{color:var(--purple)}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+
+/* ---------- About ---------- */
+.about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:80px;align-items:center}
+.about-visual{position:relative;max-width:440px}
+.about-main{border-radius:32px;overflow:hidden;box-shadow:var(--shadow);border:8px solid #fff;background:linear-gradient(150deg,#dcecff,#eedcff)}
+.about-main img{aspect-ratio:.86;object-fit:cover;width:100%}
+.about-small{position:absolute;right:-38px;bottom:38px;width:190px;border-radius:22px;overflow:hidden;border:7px solid #fff;box-shadow:var(--shadow);animation:floaty 6s ease-in-out infinite alternate}
+.about-small img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.exp-badge{position:absolute;top:26px;left:-34px;background:var(--grad);color:#fff;padding:16px 20px;border-radius:20px;box-shadow:0 18px 40px rgba(90,70,220,.35);text-align:center;animation:floaty 5s ease-in-out infinite alternate-reverse}
+.exp-badge strong{font-size:1.7rem;font-weight:800;display:block;line-height:1.1}
+.exp-badge span{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.9}
+.about-list{margin:26px 0;display:grid;grid-template-columns:1fr 1fr;gap:13px 22px}
+.about-list li{display:flex;align-items:center;gap:11px;font-weight:650;font-size:.93rem;color:#3c3d57}
+.about-list .icon{color:var(--primary);background:#eeeefe;border-radius:50%;padding:4px;width:26px;height:26px}
+.signature{margin-top:26px;display:flex;align-items:center;gap:16px}
+.signature .sig-name{font-family:"Playfair Display",serif;font-style:italic;font-size:1.5rem;color:var(--primary)}
+.signature .sig-role{font-size:.8rem;color:var(--muted);font-weight:650}
+.stats-band{margin-top:96px;background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow-small);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
+.stat{padding:36px 20px;text-align:center;position:relative}
+.stat + .stat::before{content:"";position:absolute;left:0;top:22%;bottom:22%;width:1px;background:var(--line)}
+.stat strong{font-size:clamp(2rem,3.4vw,2.9rem);font-weight:800;letter-spacing:-.04em;display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:.86rem;font-weight:650}
+
+/* ---------- Services ---------- */
+.services-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:52px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.service-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:34px 30px;transition:.4s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.service-card::before{content:"";position:absolute;inset:auto -40% -70% -40%;height:70%;background:radial-gradient(closest-side,rgba(120,110,255,.12),transparent);opacity:0;transition:.4s}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:#d8d9f7}
+.service-card:hover::before{opacity:1}
+.service-icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;color:#fff;margin-bottom:22px;box-shadow:0 12px 26px rgba(90,80,220,.28);transition:.4s}
+.service-card:hover .service-icon{transform:rotate(-6deg) scale(1.06)}
+.si-1{background:linear-gradient(135deg,#4a6bff,#7a4ff0)}
+.si-2{background:linear-gradient(135deg,#7a4ff0,#c44dd9)}
+.si-3{background:linear-gradient(135deg,#2e9cf7,#5b5cf0)}
+.si-4{background:linear-gradient(135deg,#f65b8a,#f6794d)}
+.si-5{background:linear-gradient(135deg,#0fbfa4,#2e9cf7)}
+.service-icon .icon{width:26px;height:26px}
+.service-card h3{font-size:1.22rem;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.service-card p{color:var(--muted);font-size:.93rem;flex:1}
+.service-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.service-tags span{font-size:.72rem;font-weight:700;color:#5b5cd6;background:#f0f1ff;border:1px solid #e3e4fb;padding:4px 11px;border-radius:100px}
+.service-link{margin-top:20px;display:inline-flex;align-items:center;gap:7px;color:var(--primary);font-weight:750;font-size:.9rem}
+.service-link .icon{transition:.3s}
+.service-card:hover .service-link .icon{transform:translateX(5px)}
+.service-cta{background:var(--grad);color:#fff;border:0;display:flex;flex-direction:column;justify-content:center;box-shadow:0 20px 50px rgba(100,80,230,.35)}
+.service-cta::before{display:none}
+.service-cta h3{font-size:1.4rem}
+.service-cta p{color:rgba(255,255,255,.88)}
+.service-cta .btn{margin-top:22px;align-self:flex-start}
+
+/* ---------- Portfolio ---------- */
+.work-head{display:flex;align-items:flex-end;justify-content:space-between;gap:26px;flex-wrap:wrap;margin-bottom:44px}
+.filters{display:flex;flex-wrap:wrap;gap:9px}
+.filter-btn{border:1.5px solid var(--line);background:#fff;padding:9px 18px;border-radius:100px;font-weight:700;font-size:.84rem;color:#55566b;cursor:pointer;transition:.3s}
+.filter-btn:hover{border-color:#b9baf7;color:var(--primary);transform:translateY(-2px)}
+.filter-btn.active{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 10px 22px rgba(95,80,230,.3)}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.work-card{border-radius:24px;background:#fff;border:1px solid var(--line);overflow:hidden;cursor:pointer;transition:.4s cubic-bezier(.22,1,.36,1);animation:popIn .5s cubic-bezier(.22,1,.36,1) both}
+@keyframes popIn{from{opacity:0;transform:scale(.94) translateY(16px)}to{opacity:1;transform:none}}
+.work-card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.work-card.hide{display:none}
+.work-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(140deg,#e8ecff,#f3e9ff)}
+.work-media img{width:100%;height:100%;object-fit:cover;transition:.7s cubic-bezier(.22,1,.36,1)}
+.work-card:hover .work-media img{transform:scale(1.07)}
+.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(35,30,90,.55),transparent 55%);opacity:0;transition:.4s;display:flex;align-items:flex-end;padding:18px}
+.work-card:hover .work-overlay{opacity:1}
+.work-view{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);padding:9px 16px;border-radius:100px;font-size:.8rem;font-weight:750;transform:translateY(12px);transition:.4s;box-shadow:0 8px 20px rgba(20,20,60,.25)}
+.work-card:hover .work-view{transform:none}
+.work-info{padding:20px 22px 24px}
+.work-cat{font-size:.71rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--primary)}
+.work-info h3{font-size:1.13rem;font-weight:800;letter-spacing:-.02em;margin:7px 0 5px}
+.work-info p{color:var(--muted);font-size:.87rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* ---------- Lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:250;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(16,15,45,.7);backdrop-filter:blur(10px)}
+.lightbox.open{display:flex;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.lightbox-panel{background:#fff;border-radius:26px;max-width:1000px;width:100%;max-height:90vh;overflow:auto;display:grid;grid-template-columns:1.15fr .85fr;box-shadow:0 40px 100px rgba(10,10,40,.4);animation:popIn .45s cubic-bezier(.22,1,.36,1)}
+.lightbox-img{background:linear-gradient(140deg,#e8ecff,#f3e9ff);min-height:320px}
+.lightbox-img img{width:100%;height:100%;object-fit:cover}
+.lightbox-info{padding:38px 34px;display:flex;flex-direction:column}
+.lightbox-info .work-cat{font-size:.74rem}
+.lightbox-info h3{font-size:1.7rem;font-weight:800;letter-spacing:-.03em;margin:8px 0 12px}
+.lightbox-info p{color:var(--muted);font-size:.95rem}
+.lb-tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 24px}
+.lb-tags span{font-size:.73rem;font-weight:700;color:#5b5cd6;background:#f0f1ff;padding:5px 12px;border-radius:100px}
+.lb-nav{margin-top:auto;display:flex;gap:10px}
+.lb-btn{width:46px;height:46px;border-radius:14px;border:1.5px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;transition:.3s}
+.lb-btn:hover{background:var(--grad);color:#fff;border-color:transparent;transform:translateY(-2px)}
+.lightbox-close{position:absolute;top:20px;right:22px;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.3s}
+.lightbox-close:hover{background:#fff;color:var(--ink);transform:rotate(90deg)}
+
+/* ---------- Testimonials ---------- */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:52px}
+.tst-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:32px 28px;position:relative;transition:.4s cubic-bezier(.22,1,.36,1)}
+.tst-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.tst-quote{position:absolute;top:24px;right:26px;color:#e6e7fb}
+.tst-quote .icon{width:42px;height:42px}
+.tst-stars{color:#ffad33;letter-spacing:2px;margin-bottom:14px;font-size:.92rem}
+.tst-card p{color:#4a4b64;font-size:.95rem;position:relative;z-index:1}
+.tst-author{margin-top:22px;display:flex;align-items:center;gap:13px}
+.tst-author span{width:46px;height:46px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem;box-shadow:0 8px 18px rgba(90,80,220,.3)}
+.tst-author strong{display:block;font-size:.94rem}
+.tst-author small{color:var(--muted);font-size:.78rem;font-weight:600}
+.rating-summary{display:inline-flex;align-items:center;gap:14px;margin-top:26px;background:#fff;border:1px solid var(--line);padding:13px 20px;border-radius:100px;font-weight:750;font-size:.9rem;box-shadow:var(--shadow-small)}
+.rating-summary .stars{font-size:1rem}
+
+/* ---------- CTA band ---------- */
+.cta-band{padding:0 0 112px}
+.cta-inner{position:relative;overflow:hidden;background:var(--grad);border-radius:34px;padding:72px 60px;color:#fff;text-align:center;box-shadow:0 30px 70px rgba(95,80,230,.35)}
+.cta-inner::before,.cta-inner::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.1)}
+.cta-inner::before{width:300px;height:300px;top:-140px;left:-90px}
+.cta-inner::after{width:380px;height:380px;bottom:-190px;right:-110px}
+.cta-inner h2{font-size:clamp(1.9rem,3.6vw,3rem);letter-spacing:-.04em;line-height:1.15;max-width:700px;margin:0 auto 18px;position:relative;z-index:1}
+.cta-inner p{color:rgba(255,255,255,.9);max-width:520px;margin:0 auto 30px;position:relative;z-index:1}
+.cta-inner .btn{position:relative;z-index:1}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.contact-cards{display:grid;gap:16px;margin-top:34px}
+.contact-card{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;transition:.3s}
+.contact-card:hover{transform:translateX(6px);box-shadow:var(--shadow-small);border-color:#d8d9f7}
+.contact-card .cc-icon{width:48px;height:48px;border-radius:14px;background:#eef0ff;color:var(--primary);display:grid;place-items:center;flex-shrink:0}
+.contact-card small{display:block;color:var(--muted);font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.contact-card strong{font-size:.98rem;word-break:break-all}
+.socials{display:flex;gap:11px;margin-top:28px;flex-wrap:wrap}
+.social-btn{width:48px;height:48px;border-radius:14px;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;color:#55566b;transition:.3s}
+.social-btn:hover{background:var(--grad);color:#fff;border-color:transparent;transform:translateY(-4px);box-shadow:0 12px 24px rgba(95,80,230,.3)}
+.contact-form{background:#fff;border:1px solid var(--line);border-radius:28px;padding:38px;box-shadow:var(--shadow-small)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.82rem;font-weight:750;margin-bottom:7px;color:#3c3d57}
+.field input,.field select,.field textarea{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:13px;padding:13px 16px;font-size:.94rem;transition:.25s;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#8d8ef2;background:#fff;box-shadow:0 0 0 4px rgba(91,92,240,.1)}
+.field textarea{resize:vertical;min-height:120px}
+.form-note{font-size:.78rem;color:var(--muted);text-align:center;margin-top:14px}
+
+/* ---------- Footer ---------- */
+footer{background:linear-gradient(180deg,#fbfbff,#f3f5ff);border-top:1px solid var(--line);padding:74px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:44px;padding-bottom:52px}
+.footer-grid h4{font-size:.86rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;color:#33345a}
+.footer-grid p{color:var(--muted);font-size:.9rem;max-width:300px}
+.footer-links li{margin-bottom:11px}
+.footer-links a{color:var(--muted);font-size:.92rem;font-weight:600;transition:.25s}
+.footer-links a:hover{color:var(--primary);padding-left:5px}
+.footer-bottom{border-top:1px solid var(--line);padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.85rem;font-weight:600}
+.footer-bottom a{color:var(--primary);font-weight:750}
+.footer-bottom a:hover{text-decoration:underline}
+
+/* ---------- To top ---------- */
+.to-top{position:fixed;right:24px;bottom:24px;z-index:90;width:50px;height:50px;border-radius:16px;border:0;background:var(--grad);color:#fff;cursor:pointer;display:grid;place-items:center;box-shadow:0 14px 30px rgba(95,80,230,.4);opacity:0;pointer-events:none;transform:translateY(16px);transition:.35s}
+.to-top.show{opacity:1;pointer-events:auto;transform:none}
+.to-top:hover{transform:translateY(-4px)}
+
+/* ---------- Toasts ---------- */
+.toast-wrap{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:400;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none}
+.toast{display:flex;align-items:center;gap:10px;background:#16172e;color:#fff;padding:13px 22px;border-radius:100px;font-size:.88rem;font-weight:700;box-shadow:0 16px 40px rgba(10,10,40,.35);animation:toastIn .4s cubic-bezier(.22,1,.36,1);pointer-events:auto;max-width:calc(100vw - 40px)}
+.toast .icon{color:#5ee6a8}
+.toast.error .icon{color:#ff7d7d}
+.toast.out{animation:toastOut .35s forwards}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateY(14px) scale(.94)}}
+
+/* ---------- Admin ---------- */
+.admin-overlay{position:fixed;inset:0;z-index:300;background:#f4f5fc;overflow-y:auto;display:none}
+.admin-overlay.open{display:block;animation:fadeIn .3s}
+.admin-login{min-height:100vh;display:grid;place-items:center;padding:24px}
+.login-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:44px 40px;width:min(420px,100%);box-shadow:var(--shadow);text-align:center}
+.login-card .logo-mark{margin:0 auto 18px;width:56px;height:56px;border-radius:18px;font-size:1.4rem}
+.login-card h2{font-size:1.5rem;letter-spacing:-.03em;margin-bottom:6px}
+.login-card > p{color:var(--muted);font-size:.88rem;margin-bottom:26px}
+.login-card .field{text-align:left}
+.admin-hint{margin-top:18px;font-size:.76rem;color:var(--muted);background:var(--surface);border:1px dashed #d6d7ef;border-radius:12px;padding:11px 14px}
+.admin-shell{display:none}
+.admin-shell.open{display:block}
+.admin-top{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.admin-top-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.admin-tab{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:9px 18px;font-weight:750;font-size:.87rem;color:#55566b;cursor:pointer;transition:.25s;display:inline-flex;align-items:center;gap:8px}
+.admin-tab.active{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 8px 20px rgba(95,80,230,.28)}
+.admin-body{padding:36px 0 80px}
+.admin-panel{display:none}
+.admin-panel.open{display:block;animation:popIn .4s}
+.admin-panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.admin-panel-head h3{font-size:1.4rem;letter-spacing:-.03em}
+.admin-panel-head p{color:var(--muted);font-size:.88rem}
+.admin-list{display:grid;gap:14px}
+.admin-row{display:flex;align-items:center;gap:18px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 18px;transition:.25s}
+.admin-row:hover{box-shadow:var(--shadow-small);border-color:#d8d9f7}
+.admin-thumb{width:78px;height:58px;border-radius:12px;object-fit:cover;flex-shrink:0;background:linear-gradient(140deg,#e8ecff,#f3e9ff)}
+.admin-row-info{flex:1;min-width:0}
+.admin-row-info strong{display:block;font-size:.98rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#5b5cd6;background:#f0f1ff;padding:3px 11px;border-radius:100px;margin-top:4px}
+.admin-row-actions{display:flex;gap:9px;flex-shrink:0}
+.icon-btn{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;transition:.25s;color:#55566b}
+.icon-btn:hover{border-color:#8d8ef2;color:var(--primary);transform:translateY(-2px)}
+.icon-btn.danger:hover{border-color:#ff8f8f;color:#e5484d;background:#fff5f5}
+.msg-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.msg-card .msg-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.msg-card strong{font-size:.95rem}
+.msg-card small{color:var(--muted);font-weight:600}
+.msg-card p{color:#4a4b64;font-size:.9rem;margin-top:6px}
+.content-form{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
+.content-form .full{grid-column:1/-1}
+.img-upload{border:2px dashed #cfd0f0;border-radius:18px;padding:22px;text-align:center;background:var(--surface);transition:.25s;cursor:pointer}
+.img-upload:hover{border-color:#8d8ef2;background:#f2f3ff}
+.img-upload img{width:130px;height:130px;object-fit:cover;border-radius:16px;margin:0 auto 12px;box-shadow:var(--shadow-small)}
+.img-upload span{display:block;font-size:.82rem;font-weight:700;color:var(--primary)}
+.img-upload small{display:block;color:var(--muted);font-size:.74rem;margin-top:3px}
+.modal{position:fixed;inset:0;z-index:350;background:rgba(16,15,45,.6);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:22px}
+.modal.open{display:flex;animation:fadeIn .25s}
+.modal-card{background:#fff;border-radius:26px;width:min(600px,100%);max-height:92vh;overflow-y:auto;padding:34px;position:relative;animation:popIn .35s cubic-bezier(.22,1,.36,1)}
+.modal-card h3{font-size:1.3rem;letter-spacing:-.03em;margin-bottom:22px}
+.modal-close{position:absolute;top:18px;right:18px}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1024px){
+  .hero-grid{gap:44px}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .work-grid{grid-template-columns:repeat(2,1fr)}
+  .tst-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .fc-1{left:-14px}.fc-2{right:-10px}
+}
+@media(max-width:900px){
+  .section{padding:88px 0}
+  .nav-links{display:none}
+  .menu-btn{display:grid}
+  .nav-cta .btn{display:none}
+  .hero{padding-top:130px}
+  .hero-grid{grid-template-columns:1fr;gap:60px}
+  .hero-visual{margin:0 auto;max-width:420px}
+  .about-grid{grid-template-columns:1fr;gap:70px}
+  .about-visual{margin:0 auto}
+  .contact-grid{grid-template-columns:1fr;gap:44px}
+  .stats-band{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3)::before{display:none}
+  .lightbox-panel{grid-template-columns:1fr;max-height:92vh}
+  .lightbox-img{max-height:44vh}
+}
+@media(max-width:640px){
+  .services-grid,.work-grid,.tst-grid,.form-row{grid-template-columns:1fr}
+  .about-list{grid-template-columns:1fr}
+  .cta-inner{padding:56px 26px}
+  .hero h1{font-size:2.7rem}
+  .float-card{padding:11px 14px;font-size:.74rem}
+  .fc-1{top:4%;left:-6px}.fc-2{bottom:10%;right:-6px}
+  .spin-badge{width:98px;height:98px;left:-10px;bottom:-18px}
+  .exp-badge{left:-12px}
+  .about-small{width:150px;right:-10px}
+  .contact-form{padding:26px 20px}
+  .content-form{grid-template-columns:1fr;padding:24px 20px}
+  .footer-grid{grid-template-columns:1fr}
+  .admin-row{flex-wrap:wrap}
+  .work-head,.services-head{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">
+      <span class="logo-mark">H</span>
+      <span>Hemal Graphics<small>DESIGN STUDIO</small></span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home" data-spy>Home</a></li>
+        <li><a href="#about" data-spy>About</a></li>
+        <li><a href="#services" data-spy>Services</a></li>
+        <li><a href="#work" data-spy>Work</a></li>
+        <li><a href="#testimonials" data-spy>Reviews</a></li>
+        <li><a href="#contact" data-spy>Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary btn-small">Let's Talk <i data-lucide="arrow-up-right" class="icon"></i></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><i data-lucide="menu" class="icon"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">Home <i data-lucide="arrow-up-right" class="icon"></i></a>
+  <a href="#about">About <i data-lucide="arrow-up-right" class="icon"></i></a>
+  <a href="#services">Services <i data-lucide="arrow-up-right" class="icon"></i></a>
+  <a href="#work">Work <i data-lucide="arrow-up-right" class="icon"></i></a>
+  <a href="#testimonials">Reviews <i data-lucide="arrow-up-right" class="icon"></i></a>
+  <a href="#contact">Contact <i data-lucide="arrow-up-right" class="icon"></i></a>
+</div>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="availability reveal"><i></i><span id="heroBadge">Available for new projects</span></span>
+      <h1 class="reveal" style="--d:.08s"><span id="heroLine1">Crafting bold brands</span> <em class="serif gradient-text" id="heroAccent">&amp; visuals people remember.</em></h1>
+      <p class="hero-copy reveal" style="--d:.16s" id="heroText">I'm Hemal — a premium graphic designer helping startups, businesses and creators stand out with striking logos, brand identities and scroll-stopping visual content.</p>
+      <div class="hero-actions reveal" style="--d:.24s">
+        <a href="#contact" class="btn btn-primary">Start a Project <i data-lucide="arrow-up-right" class="icon"></i></a>
+        <a href="#work" class="btn btn-outline">View Portfolio <i data-lucide="eye" class="icon"></i></a>
+      </div>
+      <div class="hero-proof reveal" style="--d:.32s">
+        <div class="avatar-stack">
+          <span style="background:linear-gradient(135deg,#4a6bff,#7a4ff0)">SM</span>
+          <span style="background:linear-gradient(135deg,#f65b8a,#f6794d)">DC</span>
+          <span style="background:linear-gradient(135deg,#0fbfa4,#2e9cf7)">AH</span>
+          <span style="background:linear-gradient(135deg,#7a4ff0,#c44dd9)">+9</span>
+        </div>
+        <div>
+          <span class="stars">★★★★★</span><br />
+          Trusted by <strong style="color:var(--ink)">120+ happy clients</strong> worldwide
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal" style="--d:.2s">
+      <div class="portrait-frame">
+        <img id="profileImg" src="https://picsum.photos/seed/hemal-portrait/700/860.jpg" alt="Hemal — Graphic Designer portrait" />
+      </div>
+      <div class="float-card fc-1">
+        <span class="fc-icon" style="background:linear-gradient(135deg,#4a6bff,#7a4ff0)"><i data-lucide="award" class="icon"></i></span>
+        <div>Top Rated Designer<small>98% job success score</small></div>
+      </div>
+      <div class="float-card fc-2">
+        <span class="fc-icon" style="background:linear-gradient(135deg,#0fbfa4,#2e9cf7)"><i data-lucide="briefcase" class="icon"></i></span>
+        <div>350+ Projects<small>Delivered on time</small></div>
+      </div>
+      <div class="spin-badge" aria-hidden="true">
+        <svg viewBox="0 0 100 100"><defs><path id="circlePath" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0"/></defs>
+          <text style="font-size:9.4px;font-weight:800;letter-spacing:2.1px;fill:#5b5cf0;font-family:Manrope,sans-serif"><textPath href="#circlePath">LET'S WORK TOGETHER • HEMAL • </textPath></text>
+        </svg>
+        <i data-lucide="pen-tool" class="icon spin-icon"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-main"><img id="aboutImg" src="https://picsum.photos/seed/hemal-studio/640/760.jpg" alt="Hemal Graphics design studio" /></div>
+        <div class="about-small"><img id="aboutImg2" src="https://picsum.photos/seed/hemal-desk/420/320.jpg" alt="Designer workspace" /></div>
+        <div class="exp-badge"><strong id="statYearsBadge">6+</strong><span>Years of<br />Experience</span></div>
+      </div>
+      <div>
+        <span class="eyebrow reveal">About Me</span>
+        <h2 class="section-title reveal" style="--d:.08s">Designing with <em class="serif gradient-text">purpose, strategy</em> &amp; soul</h2>
+        <p class="section-subtitle reveal" style="--d:.14s" id="aboutP1">Hi, I'm Hemal — a passionate graphic designer with 6+ years of experience turning ideas into visuals that connect, convert and inspire. I blend strategy with creativity to craft designs that don't just look beautiful, they work hard for your business.</p>
+        <p class="section-subtitle reveal" style="--d:.2s" id="aboutP2">From ambitious startups to established brands, I've helped clients across the globe build identities they're proud of — always with clear communication, fast turnaround and pixel-perfect delivery.</p>
+        <ul class="about-list reveal" style="--d:.26s">
+          <li><i data-lucide="check" class="icon"></i> Brand-first design strategy</li>
+          <li><i data-lucide="check" class="icon"></i> Pixel-perfect, print-ready files</li>
+          <li><i data-lucide="check" class="icon"></i> Friendly, unlimited revisions</li>
+          <li><i data-lucide="check" class="icon"></i> Always on-time delivery</li>
+        </ul>
+        <div class="reveal" style="--d:.32s">
+          <a href="#contact" class="btn btn-primary">Work With Me <i data-lucide="arrow-up-right" class="icon"></i></a>
+        </div>
+        <div class="signature reveal" style="--d:.38s">
+          <span class="sig-name">Hemal</span>
+          <span class="sig-role">— Founder &amp; Lead Designer,<br />Hemal Graphics</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-band reveal">
+      <div class="stat"><strong><span class="count" data-count="350">0</span>+</strong><span>Projects Completed</span></div>
+      <div class="stat"><strong><span class="count" data-count="120">0</span>+</strong><span>Happy Clients</span></div>
+      <div class="stat"><strong><span class="count" data-count="6">0</span>+</strong><span>Years Experience</span></div>
+      <div class="stat"><strong><span class="count" data-count="12">0</span></strong><span>Design Awards</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section section-soft" id="services">
+  <div class="container">
+    <div class="services-head">
+      <div>
+        <span class="eyebrow reveal">What I Do</span>
+        <h2 class="section-title reveal" style="--d:.08s">Premium services to <em class="serif gradient-text">elevate your brand</em></h2>
+      </div>
+      <p class="section-subtitle reveal" style="--d:.14s" style="max-width:380px">Every project is crafted from scratch — no templates, no shortcuts. Just original design that moves your brand forward.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon si-1"><i data-lucide="pen-tool" class="icon"></i></span>
+        <h3>Logo Design</h3>
+        <p>Memorable, versatile logos built on strategy — from initial concepts to final master files in every format you'll ever need.</p>
+        <div class="service-tags"><span>3 Concepts</span><span>Vector Files</span><span>Brand Sheet</span></div>
+        <a href="#contact" class="service-link">Get started <i data-lucide="arrow-right" class="icon" style="width:16px;height:16px"></i></a>
+      </div>
+      <div class="service-card reveal" style="--d:.06s">
+        <span class="service-icon si-2"><i data-lucide="layers" class="icon"></i></span>
+        <h3>Branding &amp; Identity</h3>
+        <p>Complete brand identity systems — colour palettes, typography, guidelines and collateral that keep your brand consistent everywhere.</p>
+        <div class="service-tags"><span>Brand Guide</span><span>Stationery</span><span>Strategy</span></div>
+        <a href="#contact" class="service-link">Get started <i data-lucide="arrow-right" class="icon" style="width:16px;height:16px"></i></a>
+      </div>
+      <div class="service-card reveal" style="--d:.12s">
+        <span class="service-icon si-3"><i data-lucide="share-2" class="icon"></i></span>
+        <h3>Social Media Design</h3>
+        <p>Scroll-stopping posts, stories and carousels designed to grow your audience and keep your feed looking world-class.</p>
+        <div class="service-tags"><span>Posts &amp; Stories</span><span>Templates</span><span>Campaigns</span></div>
+        <a href="#contact" class="service-link">Get started <i data-lucide="arrow-right" class="icon" style="width:16px;height:16px"></i></a>
+      </div>
+      <div class="service-card reveal" style="--d:.18s">
+        <span class="service-icon si-4"><i data-lucide="youtube" class="icon"></i></span>
+        <h3>YouTube Thumbnails</h3>
+        <p>High-CTR thumbnails engineered to grab attention in half a second — because your content deserves to be clicked.</p>
+        <div class="service-tags"><span>High CTR</span><span>A/B Variants</span><span>Fast Delivery</span></div>
+        <a href="#contact" class="service-link">Get started <i data-lucide="arrow-right" class="icon" style="width:16px;height:16px"></i></a>
+      </div>
+      <div class="service-card reveal" style="--d:.24s">
+        <span class="service-icon si-5"><i data-lucide="image" class="icon"></i></span>
+        <h3>Flyer &amp; Banner Design</h3>
+        <p>Eye-catching flyers, posters and banners — digital or print — that make your events, offers and launches impossible to ignore.</p>
+        <div class="service-tags"><span>Print Ready</span><span>All Sizes</span><span>Fast Turnaround</span></div>
+        <a href="#contact" class="service-link">Get started <i data-lucide="arrow-right" class="icon" style="width:16px;height:16px"></i></a>
+      </div>
+      <div class="service-card service-cta reveal" style="--d:.3s">
+        <h3>Have something else in mind?</h3>
+        <p>Business cards, packaging, pitch decks, menu design — if it can be designed, I can design it.</p>
+        <a href="#contact" class="btn btn-light btn-small">Ask Me Anything <i data-lucide="send" class="icon" style="width:16px;height:16px"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="section" id="work">
+  <div class="container">
+    <div class="work-head">
+      <div>
+        <span class="eyebrow reveal">Selected Work</span>
+        <h2 class="section-title reveal" style="--d:.08s">A portfolio of <em class="serif gradient-text">proud moments</em></h2>
+        <p class="section-subtitle reveal" style="--d:.14s">Browse recent projects across branding, logos, social media and more. Click any project to preview it.</p>
+      </div>
+      <div class="filters reveal" style="--d:.2s" id="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Logo Design">Logo Design</button>
+        <button class="filter-btn" data-filter="Branding">Branding</button>
+        <button class="filter-btn" data-filter="Social Media">Social Media</button>
+        <button class="filter-btn" data-filter="YouTube Thumbnail">YouTube Thumbnail</button>
+        <button class="filter-btn" data-filter="Flyer & Banner">Flyer &amp; Banner</button>
+      </div>
+    </div>
+    <div class="work-grid" id="portfolioGrid"><!-- rendered by JS --></div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="section section-soft" id="testimonials">
+  <div class="container">
+    <span class="eyebrow reveal">Client Love</span>
+    <h2 class="section-title reveal" style="--d:.08s">What clients say about <em class="serif gradient-text">working with me</em></h2>
+    <div class="rating-summary reveal" style="--d:.14s"><span class="stars">★★★★★</span> <strong>5.0 average</strong> <span style="color:var(--muted);font-weight:600">from 120+ reviews</span></div>
+    <div class="tst-grid">
+      <div class="tst-card reveal">
+        <span class="tst-quote"><i data-lucide="quote" class="icon"></i></span>
+        <div class="tst-stars">★★★★★</div>
+        <p>"Hemal completely transformed our brand. The logo and identity he created feel premium and instantly recognisable. Sales inquiries doubled within two months of the rebrand!"</p>
+        <div class="tst-author">
+          <span>SM</span>
+          <div><strong>Sarah Mitchell</strong><small>Founder, Bloom Skincare</small></div>
+        </div>
+      </div>
+      <div class="tst-card reveal" style="--d:.08s">
+        <span class="tst-quote"><i data-lucide="quote" class="icon"></i></span>
+        <div class="tst-stars">★★★★★</div>
+        <p>"My channel's CTR jumped from 4% to over 11% after switching to Hemal's thumbnails. He understands what makes people click. Fast, professional and insanely talented."</p>
+        <div class="tst-author">
+          <span>DC</span>
+          <div><strong>David Chen</strong><small>Creator, GadgetGram (820K subs)</small></div>
+        </div>
+      </div>
+      <div class="tst-card reveal" style="--d:.16s">
+        <span class="tst-quote"><i data-lucide="quote" class="icon"></i></span>
+        <div class="tst-stars">★★★★★</div>
+        <p>"From the flyers for our grand opening to our full social media kit — everything was delivered ahead of schedule and looked absolutely stunning. We've found our permanent designer."</p>
+        <div class="tst-author">
+          <span>AH</span>
+          <div><strong>Amira Hassan</strong><small>CEO, Sahara Grill</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <h2>Ready to give your brand the <em class="serif">glow-up</em> it deserves?</h2>
+      <p>Tell me about your project today and get a free consultation + quote within 24 hours.</p>
+      <a href="#contact" class="btn btn-light">Get a Free Quote <i data-lucide="arrow-up-right" class="icon"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section" id="contact" style="padding-top:0">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow reveal">Get In Touch</span>
+        <h2 class="section-title reveal" style="--d:.08s">Let's create something <em class="serif gradient-text">amazing together</em></h2>
+        <p class="section-subtitle reveal" style="--d:.14s">Have a project in mind? Drop me a message — I reply to every inquiry within 24 hours.</p>
+        <div class="contact-cards">
+          <div class="contact-card reveal" style="--d:.18s">
+            <span class="cc-icon"><i data-lucide="mail" class="icon"></i></span>
+            <div><small>Email</small><strong id="contactEmail">hello@hemalgraphics.com</strong></div>
+          </div>
+          <div class="contact-card reveal" style="--d:.24s">
+            <span class="cc-icon"><i data-lucide="phone" class="icon"></i></span>
+            <div><small>Phone / WhatsApp</small><strong id="contactPhone">+880 1XXX-XXXXXX</strong></div>
+          </div>
+          <div class="contact-card reveal" style="--d:.3s">
+            <span class="cc-icon"><i data-lucide="map-pin" class="icon"></i></span>
+            <div><small>Location</small><strong id="contactLocation">Working Worldwide — Remote</strong></div>
+          </div>
+        </div>
+        <div class="socials reveal" style="--d:.36s">
+          <a class="social-btn" href="#" aria-label="Instagram"><i data-lucide="instagram" class="icon"></i></a>
+          <a class="social-btn" href="#" aria-label="Dribbble"><i data-lucide="dribbble" class="icon"></i></a>
+          <a class="social-btn" href="#" aria-label="LinkedIn"><i data-lucide="linkedin" class="icon"></i></a>
+          <a class="social-btn" href="#" aria-label="YouTube"><i data-lucide="youtube" class="icon"></i></a>
+          <a class="social-btn" href="#" aria-label="WhatsApp"><i data-lucide="message-circle" class="icon"></i></a>
+        </div>
+      </div>
+      <form class="contact-form reveal" style="--d:.2s" id="contactForm">
+        <div class="form-row">
+          <div class="field"><label for="cfName">Your Name *</label><input id="cfName" type="text" placeholder="John Carter" required /></div>
+          <div class="field"><label for="cfEmail">Email Address *</label><input id="cfEmail" type="email" placeholder="john@company.com" required /></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="cfService">Service Needed</label>
+            <select id="cfService">
+              <option>Logo Design</option>
+              <option>Branding &amp; Identity</option>
+              <option>Social Media Design</option>
+              <option>YouTube Thumbnail</option>
+              <option>Flyer &amp; Banner Design</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+          <div class="field"><label for="cfBudget">Budget Range</label>
+            <select id="cfBudget">
+              <option>Under $100</option>
+              <option>$100 – $300</option>
+              <option>$300 – $700</option>
+              <option>$700+</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="cfMsg">Project Details *</label><textarea id="cfMsg" placeholder="Tell me about your brand, goals and timeline…" required></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Send Message <i data-lucide="send" class="icon"></i></button>
+        <p class="form-note"><i data-lucide="lock" class="icon" style="width:13px;height:13px;vertical-align:-2px"></i> Your information is safe and never shared.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#home" class="logo" style="margin-bottom:16px">
+          <span class="logo-mark">H</span>
+          <span>Hemal Graphics<small>DESIGN STUDIO</small></span>
+        </a>
+        <p>Premium graphic design for ambitious brands. Logos, identities and visual content that turn viewers into loyal customers.</p>
+        <div class="socials" style="margin-top:20px">
+          <a class="social-btn" href="#" aria-label="Instagram" style="width:42px;height:42px"><i data-lucide="instagram" class="icon"></i></a>
+          <a class="social-btn" href="#" aria-label="Dribbble" style="width:42px;height:42px"><i data-lucide="dribbble" class="icon"></i></a>
+          <a class="social-btn" href="#" aria-label="LinkedIn" style="width:42px;height:42px"><i data-lucide="linkedin" class="icon"></i></a>
+          <a class="social-btn" href="#" aria-label="YouTube" style="width:42px;height:42px"><i data-lucide="youtube" class="icon"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#work">Portfolio</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Logo Design</a></li>
+          <li><a href="#services">Branding &amp; Identity</a></li>
+          <li><a href="#services">Social Media Design</a></li>
+          <li><a href="#services">YouTube Thumbnails</a></li>
+          <li><a href="#services">Flyer &amp; Banner Design</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:hello@hemalgraphics.com" id="footEmail">hello@hemalgraphics.com</a></li>
+          <li><a href="tel:+8801000000000" id="footPhone">+880 1XXX-XXXXXX</a></li>
+          <li><a href="#contact" id="footLoc">Working Worldwide — Remote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Hemal Graphics. All rights reserved. Crafted with passion.</span>
+      <a href="#admin" id="adminLink">Admin Login</a>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><i data-lucide="arrow-up" class="icon"></i></button>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lbClose" aria-label="Close preview"><i data-lucide="x" class="icon"></i></button>
+  <div class="lightbox-panel">
+    <div class="lightbox-img"><img id="lbImg" src="" alt="Project preview" /></div>
+    <div class="lightbox-info">
+      <span class="work-cat" id="lbCat"></span>
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+      <div class="lb-tags" id="lbTags"></div>
+      <div class="lb-nav">
+        <button class="lb-btn" id="lbPrev" aria-label="Previous project"><i data-lucide="arrow-left" class="icon"></i></button>
+        <button class="lb-btn" id="lbNext" aria-label="Next project"><i data-lucide="arrow-right" class="icon"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ADMIN ================= -->
+<div class="admin-overlay" id="adminOverlay">
+  <!-- Login -->
+  <div class="admin-login" id="adminLogin">
+    <div class="login-card">
+      <span class="logo-mark">H</span>
+      <h2>Admin Dashboard</h2>
+      <p>Sign in to manage your portfolio &amp; content.</p>
+      <form id="loginForm">
+        <div class="field"><label for="adEmail">Email</label><input id="adEmail" type="email" placeholder="admin@hemal.graphics" required /></div>
+        <div class="field"><label for="adPass">Password</label><input id="adPass" type="password" placeholder="••••••••" required /></div>
+        <button type="submit" class="btn btn-primary" style="width:100%"><i data-lucide="lock" class="icon"></i> Sign In</button>
+      </form>
+      <div class="admin-hint">Demo credentials → <strong>admin@hemal.graphics</strong> / <strong>hemal2024</strong><br />Connect your Firebase config in the code for production auth, Firestore &amp; Storage.</div>
+      <button class="btn btn-outline btn-small" id="loginBack" style="margin-top:16px"><i data-lucide="arrow-left" class="icon" style="width:15px;height:15px"></i> Back to site</button>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="admin-shell" id="adminShell">
+    <div class="admin-top">
+      <div class="container admin-top-inner">
+        <a href="#home" class="logo"><span class="logo-mark">H</span><span>Hemal Graphics<small>ADMIN PANEL</small></span></a>
+        <div class="admin-tabs">
+          <button class="admin-tab active" data-tab="projects"><i data-lucide="folder-open" class="icon" style="width:16px;height:16px"></i> Projects</button>
+          <button class="admin-tab" data-tab="content"><i data-lucide="layout-dashboard" class="icon" style="width:16px;height:16px"></i> Site Content</button>
+          <button class="admin-tab" data-tab="messages"><i data-lucide="inbox" class="icon" style="width:16px;height:16px"></i> Messages <span id="msgCount" style="background:#e5484d;color:#fff;border-radius:100px;padding:1px 8px;font-size:.7rem">0</span></button>
+        </div>
+        <div style="display:flex;gap:9px">
+          <button class="icon-btn" id="viewSite" title="View site"><i data-lucide="external-link" class="icon"></i></button>
+          <button class="icon-btn" id="logoutBtn" title="Log out"><i data-lucide="log-out" class="icon"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container admin-body">
+      <!-- Projects panel -->
+      <div class="admin-panel open" id="panel-projects">
+        <div class="admin-panel-head">
+          <div><h3>Portfolio Projects</h3><p>Add, edit or remove projects shown in the public gallery.</p></div>
+          <button class="btn btn-primary btn-small" id="addProjectBtn"><i data-lucide="plus" class="icon" style="width:16px;height:16px"></i> Add Project</button>
+        </div>
+        <div class="admin-list" id="adminList"></div>
+      </div>
+
+      <!-- Content panel -->
+      <div class="admin-panel" id="panel-content">
+        <div class="admin-panel-head">
+          <div><h3>Site Content</h3><p>Replace images and edit the text shown across the website.</p></div>
+          <button class="btn btn-primary btn-small" id="saveContentBtn"><i data-lucide="save" class="icon" style="width:16px;height:16px"></i> Save Changes</button>
+        </div>
+        <div class="content-form">
+          <div class="field full"><label>Hero Badge Text</label><input id="ctBadge" type="text" /></div>
+          <div class="field"><label>Hero Line 1 (normal)</label><input id="ctLine1" type="text" /></div>
+          <div class="field"><label>Hero Accent (italic gradient)</label><input id="ctAccent" type="text" /></div>
+          <div class="field full"><label>Hero Paragraph</label><textarea id="ctHeroText" rows="3"></textarea></div>
+          <div class="field full"><label>About Paragraph 1</label><textarea id="ctAbout1" rows="3"></textarea></div>
+          <div class="field full"><label>About Paragraph 2</label><textarea id="ctAbout2" rows="3"></textarea></div>
+          <div class="field"><label>Years of Experience (badge)</label><input id="ctYears" type="text" placeholder="6+" /></div>
+          <div class="field"><label>Projects Completed (stat)</label><input id="ctStatP" type="number" /></div>
+          <div class="field"><label>Happy Clients (stat)</label><input id="ctStatC" type="number" /></div>
+          <div class="field full"><label>Profile Image (hero) — click to upload or replace</label>
+            <div class="img-upload" id="upProfile"><img id="prevProfile" src="" alt="" /><span><i data-lucide="image-plus" class="icon" style="width:15px;height:15px;vertical-align:-3px"></i> Upload new profile image</span><small>JPG or PNG, portrait works best</small></div>
+            <input type="file" id="fileProfile" accept="image/*" hidden />
+          </div>
+          <div class="field full"><label>About Image — click to upload or replace</label>
+            <div class="img-upload" id="upAbout"><img id="prevAbout" src="" alt="" /><span><i data-lucide="image-plus" class="icon" style="width:15px;height:15px;vertical-align:-3px"></i> Upload new about image</span><small>JPG or PNG</small></div>
+            <input type="file" id="fileAbout" accept="image/*" hidden />
+          </div>
+          <div class="field"><label>Contact Email</label><input id="ctEmail" type="text" /></div>
+          <div class="field"><label>Contact Phone</label><input id="ctPhone" type="text" /></div>
+          <div class="field full"><label>Location Line</label><input id="ctLocation" type="text" /></div>
+        </div>
+      </div>
+
+      <!-- Messages panel -->
+      <div class="admin-panel" id="panel-messages">
+        <div class="admin-panel-head">
+          <div><h3>Contact Messages</h3><p>Submissions from the public contact form.</p></div>
+          <button class="btn btn-outline btn-small" id="clearMsgs"><i data-lucide="trash-2" class="icon" style="width:15px;height:15px"></i> Clear All</button>
+        </div>
+        <div class="admin-list" id="msgList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit project modal -->
+<div class="modal" id="projectModal">
+  <div class="modal-card">
+    <button class="icon-btn modal-close" id="pmClose" aria-label="Close"><i data-lucide="x" class="icon"></i></button>
+    <h3 id="pmTitle">Add New Project</h3>
+    <form id="projectForm">
+      <div class="field"><label>Project Title *</label><input id="pfTitle" type="text" placeholder="e.g. Lumina Coffee Rebrand" required /></div>
+      <div class="field"><label>Category *</label>
+        <select id="pfCat">
+          <option>Logo Design</option>
+          <option>Branding</option>
+          <option>Social Media</option>
+          <option>YouTube Thumbnail</option>
+          <option>Flyer &amp; Banner</option>
+        </select>
+      </div>
+      <div class="field"><label>Description</label><textarea id="pfDesc" rows="3" placeholder="Short description shown on the card & preview…"></textarea></div>
+      <div class="field"><label>Tags (comma separated)</label><input id="pfTags" type="text" placeholder="Logo, Packaging, Guidelines" /></div>
+      <div class="field"><label>Project Image — click to upload</label>
+        <div class="img-upload" id="upProject"><img id="prevProject" src="" alt="" style="display:none" /><span id="upProjectLabel"><i data-lucide="image-plus" class="icon" style="width:15px;height:15px;vertical-align:-3px"></i> Upload project image</span><small>Stored in Firebase Storage when connected, locally otherwise</small></div>
+        <input type="file" id="fileProject" accept="image/*" hidden />
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:6px"><i data-lucide="check" class="icon"></i> Save Project</button>
+    </form>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+/* =====================================================
+   HEMAL GRAPHICS — app logic
+   Firebase (Auth / Firestore / Storage) with graceful
+   local demo fallback when config is not connected.
+===================================================== */
+
+/* ---------- Firebase config ---------- */
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+let FS = false, db = null, storage = null, fbAuth = null;
+if (!firebaseConfig.apiKey.startsWith("YOUR_")) {
+  try {
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+    storage = firebase.storage();
+    fbAuth = firebase.auth();
+    FS = true;
+  } catch (e) { console.warn("Firebase init failed, using local mode.", e); }
+}
+
+/* ---------- Defaults ---------- */
+const DEFAULT_PROJECTS = [
+  {id:"p1", title:"Lumina Coffee Co.", category:"Branding", desc:"Complete brand identity for a specialty coffee roaster — logo, packaging and full guidelines.", tags:["Logo","Packaging","Guidelines"], img:"https://picsum.photos/seed/hemal-lumina/900/675.jpg", createdAt:1},
+  {id:"p2", title:"PeakFit Athletics", category:"Logo Design", desc:"Bold, dynamic logo mark for a performance sportswear startup — built for motion.", tags:["Logo Mark","Wordmark","Apparel"], img:"https://picsum.photos/seed/hemal-peakfit/900/675.jpg", createdAt:2},
+  {id:"p3", title:"TechNova Keynote Thumb", category:"YouTube Thumbnail", desc:"High-CTR thumbnail series for a tech conference channel — 11% average click rate.", tags:["High CTR","Tech","Series"], img:"https://picsum.photos/seed/hemal-technova/900/675.jpg", createdAt:3},
+  {id:"p4", title:"Bloom Skincare Feed", category:"Social Media", desc:"30-day Instagram content system with templates for a clean beauty brand.", tags:["Instagram","Templates","Beauty"], img:"https://picsum.photos/seed/hemal-bloom/900/675.jpg", createdAt:4},
+  {id:"p5", title:"Sahara Grill Grand Opening", category:"Flyer & Banner", desc:"Print + digital flyer set and street banners for a restaurant launch event.", tags:["Print","Event","Banner"], img:"https://picsum.photos/seed/hemal-sahara/900/675.jpg", createdAt:5},
+  {id:"p6", title:"Pulse Music Festival", category:"Flyer & Banner", desc:"Electric festival identity — posters, roll-ups and social banners across the city.", tags:["Poster","Festival","Campaign"], img:"https://picsum.photos/seed/hemal-pulse/900/675.jpg", createdAt:6},
+  {id:"p7", title:"Fintrack Fintech Logo", category:"Logo Design", desc:"Minimal geometric logotype for a personal finance app — trust meets modern.", tags:["Minimal","Geometric","Fintech"], img:"https://picsum.photos/seed/hemal-fintrack/900/675.jpg", createdAt:7},
+  {id:"p8", title:"Aura Yoga Studio", category:"Branding", desc:"Calm, earthy identity system with custom patterns for a boutique yoga studio.", tags:["Identity","Patterns","Wellness"], img:"https://picsum.photos/seed/hemal-aura/900/675.jpg", createdAt:8},
+  {id:"p9", title:"GadgetGram Review Thumbs", category:"YouTube Thumbnail", desc:"Ongoing thumbnail design partner for an 800K-subscriber tech review channel.", tags:["YouTube","Ongoing","Tech"], img:"https://picsum.photos/seed/hemal-gadget/900/675.jpg", createdAt:9},
+  {id:"p10", title:"UrbanEats Launch Campaign", category:"Social Media", desc:"Full launch campaign kit — ads, stories and carousels for a food delivery app.", tags:["Ads","Campaign","Food"], img:"https://picsum.photos/seed/hemal-urbaneats/900/675.jpg", createdAt:10}
+];
+const DEFAULT_CONTENT = {
+  badge:"Available for new projects",
+  line1:"Crafting bold brands",
+  accent:"& visuals people remember.",
+  heroText:"I'm Hemal — a premium graphic designer helping startups, businesses and creators stand out with striking logos, brand identities and scroll-stopping visual content.",
+  about1:"Hi, I'm Hemal — a passionate graphic designer with 6+ years of experience turning ideas into visuals that connect, convert and inspire. I blend strategy with creativity to craft designs that don't just look beautiful, they work hard for your business.",
+  about2:"From ambitious startups to established brands, I've helped clients across the globe build identities they're proud of — always with clear communication, fast turnaround and pixel-perfect delivery.",
+  years:"6+", statProjects:350, statClients:120,
+  profileImg:"https://picsum.photos/seed/hemal-portrait/700/860.jpg",
+  aboutImg:"https://picsum.photos/seed/hemal-studio/640/760.jpg",
+  email:"hello@hemalgraphics.com",
+  phone:"+880 1XXX-XXXXXX",
+  location:"Working Worldwide — Remote"
+};
+const CATEGORIES = ["Logo Design","Branding","Social Media","YouTube Thumbnail","Flyer & Banner"];
+const DEMO_USER = "admin@hemal.graphics", DEMO_PASS = "hemal2024";
+const LS = {projects:"hg_projects_v1", content:"hg_content_v1", messages:"hg_messages_v1", session:"hg_session_v1"};
+
+/* ---------- State ---------- */
+let projects = [...DEFAULT_PROJECTS];
+let content  = {...DEFAULT_CONTENT};
+let messages = [];
+let editingId = null;
+let pendingProjectImg = null;
+
+/* ---------- Helpers ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s||"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const icons = () => window.lucide && lucide.createIcons();
+
+function toast(msg, type="success"){
+  const t = document.createElement("div");
+  t.className = "toast" + (type==="error" ? " error" : "");
+  t.innerHTML = `<i data-lucide="${type==="error"?"alert-circle":"check-circle-2"}" class="icon"></i><span>${esc(msg)}</span>`;
+  $("toastWrap").appendChild(t);
+  icons();
+  setTimeout(()=>{ t.classList.add("out"); setTimeout(()=>t.remove(), 380); }, 3200);
+}
+
+function fileToDataURL(file, maxW=1200, quality=.82){
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = new Image();
+      img.onload = () => {
+        const scale = Math.min(1, maxW / img.width);
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL("image/jpeg", quality));
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+async function storeImage(file, path){
+  if (FS && storage){
+    try {
+      const ref = storage.ref().child(path);
+      await ref.put(file);
+      return await ref.getDownloadURL();
+    } catch(e){ console.warn("Storage upload failed, falling back to local.", e); }
+  }
+  return await fileToDataURL(file);
+}
+
+/* ---------- Data layer ---------- */
+function loadLocal(){
+  try {
+    const p = JSON.parse(localStorage.getItem(LS.projects));
+    if (Array.isArray(p) && p.length) projects = p;
+    const c = JSON.parse(localStorage.getItem(LS.content));
+    if (c) content = {...DEFAULT_CONTENT, ...c};
+    const m = JSON.parse(localStorage.getItem(LS.messages));
+    if (Array.isArray(m)) messages = m;
+  } catch(e){}
+}
+async function fetchRemote(){
+  if (!FS) return;
+  try {
+    const snap = await db.collection("projects").get();
+    if (!snap.empty) projects = snap.docs.map(d => ({id:d.id, ...d.data()}));
+    const doc = await db.collection("site").doc("content").get();
+    if (doc.exists) content = {...DEFAULT_CONTENT, ...doc.data()};
+    const ms = await db.collection("messages").get();
+    messages = ms.docs.map(d => ({id:d.id, ...d.data()}));
+  } catch(e){ console.warn("Firestore fetch failed, using local data.", e); }
+}
+
+/* ---------- Render: public site ---------- */
+function applyContent(){
+  $("heroBadge").textContent = content.badge;
+  $("heroLine1").textContent = content.line1;
+  $("heroAccent").textContent = content.accent;
+  $("heroText").textContent = content.heroText;
+  $("aboutP1").textContent = content.about1;
+  $("aboutP2").textContent = content.about2;
+  $("statYearsBadge").textContent = content.years;
+  $("profileImg").src = content.profileImg;
+  $("aboutImg").src = content.aboutImg;
+  $("contactEmail").textContent = content.email;
+  $("contactPhone").textContent = content.phone;
+  $("contactLocation").textContent = content.location;
+  $("footEmail").textContent = content.email;
+  $("footEmail").href = "mailto:" + content.email;
+  $("footPhone").textContent = content.phone;
+  $("footLoc").textContent = content.location;
+  const sp = document.querySelectorAll(".count")[0], sc = document.querySelectorAll(".count")[1];
+  if (sp) sp.dataset.count = content.statProjects;
+  if (sc) sc.dataset.count = content.statClients;
+  document.title = "Hemal Graphics — Premium Graphic Designer & Brand Identity Specialist";
+}
+
+function renderPortfolio(){
+  const grid = $("portfolioGrid");
+  grid.innerHTML = projects.map((p, i) => `
+    <article class="work-card" data-id="${esc(p.id)}" data-cat="${esc(p.category)}" style="animation-delay:${(i%6)*60}ms">
+      <div class="work-media">
+        <img src="${esc(p.img)}" alt="${esc(p.title)} — ${esc(p.category)}" loading="lazy" />
+        <div class="work-overlay"><span class="work-view"><i data-lucide="eye" class="icon" style="width:15px;height:15px"></i> View Project</span></div>
+      </div>
+      <div class="work-info">
+        <span class="work-cat">${esc(p.category)}</span>
+        <h3>${esc(p.title)}</h3>
+        <p>${esc(p.desc)}</p>
+      </div>
+    </article>`).join("");
+  grid.querySelectorAll(".work-card").forEach(card =>
+    card.addEventListener("click", () => openLightbox(card.dataset.id))
+  );
+  icons();
+}
+
+function renderMarquee(){
+  const items = ["Logo Design","Brand Identity","Social Media Design","YouTube Thumbnails","Flyer & Banner","Packaging","Art Direction"];
+  const chunk = items.map(t => `<span>${esc(t)} <i data-lucide="sparkles" class="icon" style="width:17px;height:17px"></i></span>`).join("");
+  $("marqueeTrack").innerHTML = chunk + chunk;
+}
+
+/* ---------- Lightbox ---------- */
+let lbIndex = 0;
+function openLightbox(id){
+  lbIndex = projects.findIndex(p => p.id === id);
+  if (lbIndex < 0) return;
+  fillLightbox();
+  $("lightbox").classList.add("open");
+  document.body.classList.add("no-scroll");
+}
+function fillLightbox(){
+  const p = projects[lbIndex];
+  $("lbImg").src = p.img;
+  $("lbImg").alt = p.title;
+  $("lbCat").textContent = p.category;
+  $("lbTitle").textContent = p.title;
+  $("lbDesc").textContent = p.desc || "";
+  $("lbTags").innerHTML = (p.tags||[]).map(t => `<span>${esc(t)}</span>`).join("");
+}
+function closeLightbox(){ $("lightbox").classList.remove("open"); document.body.classList.remove("no-scroll"); }
+function stepLightbox(dir){ lbIndex = (lbIndex + dir + projects.length) % projects.length; fillLightbox(); }
+
+/* ---------- Filters ---------- */
+function bindFilters(){
+  $("filters").addEventListener("click", e => {
+    const btn = e.target.closest(".filter-btn");
+    if (!btn) return;
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const f = btn.dataset.filter;
+    document.querySelectorAll(".work-card").forEach((card, i) => {
+      const show = f === "all" || card.dataset.cat === f;
+      card.classList.toggle("hide", !show);
+      if (show){ card.style.animation = "none"; void card.offsetWidth; card.style.animation = `popIn .5s cubic-bezier(.22,1,.36,1) ${i*50}ms both`; }
+    });
+  });
+}
+
+/* ---------- Contact form ---------- */
+$("contactForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const msg = {
+    name: $("cfName").value.trim(), email: $("cfEmail").value.trim(),
+    service: $("cfService").value, budget: $("cfBudget").value,
+    message: $("cfMsg").value.trim(), date: Date.now()
+  };
+  if (!msg.name || !msg.email || !msg.message) return;
+  try {
+    if (FS) await db.collection("messages").add(msg);
+    messages.unshift(msg);
+    localStorage.setItem(LS.messages, JSON.stringify(messages.slice(0,50)));
+    e.target.reset();
+    toast("Message sent! I'll reply within 24 hours. 🎉");
+    renderMessages();
+  } catch(err){
+    toast("Something went wrong — please email me directly.", "error");
+  }
+});
+
+/* ---------- Counters / reveals / spy ---------- */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add("in"); revealObs.unobserve(en.target); } });
+}, {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
+
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target, target = +el.dataset.count, start = performance.now();
+    const tick = now => {
+      const p = Math.min(1, (now - start) / 1500);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    countObs.unobserve(el);
+  });
+}, {threshold:.5});
+document.querySelectorAll(".count").forEach(el => countObs.observe(el));
+
+const spyObs = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting){
+      document.querySelectorAll("[data-spy]").forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
+    }
+  });
+}, {rootMargin:"-42% 0px -52%"});
+["home","about","services","work","testimonials","contact"].forEach(id => { const s = $(id); if (s) spyObs.observe(s); });
+
+/* ---------- Nav / misc UI ---------- */
+window.addEventListener("scroll", () => {
+  $("nav").classList.toggle("scrolled", scrollY > 20);
+  $("toTop").classList.toggle("show", scrollY > 600);
+});
+$("toTop").addEventListener("click", () => scrollTo({top:0, behavior:"smooth"}));
+$("menuBtn").addEventListener("click", () => {
+  const open = $("mobileMenu").classList.toggle("open");
+  $("menuBtn").innerHTML = `<i data-lucide="${open?"x":"menu"}" class="icon"></i>`;
+  icons();
+});
+$("mobileMenu").addEventListener("click", e => {
+  if (e.target.closest("a")){ $("mobileMenu").classList.remove("open"); $("menuBtn").innerHTML = '<i data-lucide="menu" class="icon"></i>'; icons(); }
+});
+$("lbClose").addEventListener("click", closeLightbox);
+$("lbPrev").addEventListener("click", () => stepLightbox(-1));
+$("lbNext").addEventListener("click", () => stepLightbox(1));
+$("lightbox").addEventListener("click", e => { if (e.target === $("lightbox")) closeLightbox(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape"){ closeLightbox(); closeAdminModal(); }
+  if ($("lightbox").classList.contains("open")){
+    if (e.key === "ArrowLeft") stepLightbox(-1);
+    if (e.key === "ArrowRight") stepLightbox(1);
+  }
+});
+$("year").textContent = new Date().getFullYear();
+
+/* =====================================================
+   ADMIN
+===================================================== */
+function openAdmin(){
+  $("adminOverlay").classList.add("open");
+  document.body.classList.add("no-scroll");
+  if (localStorage.getItem(LS.session) === "ok"){ showDashboard(); }
+  else { $("adminLogin").style.display = "grid"; $("adminShell").classList.remove("open"); }
+}
+function closeAdmin(){
+  $("adminOverlay").classList.remove("open");
+  document.body.classList.remove("no-scroll");
+  if (location.hash === "#admin") history.replaceState(null, "", " ");
+}
+function showDashboard(){
+  $("adminLogin").style.display = "none";
+  $("adminShell").classList.add("open");
+  renderAdminProjects();
+  fillContentForm();
+  renderMessages();
+  icons();
+}
+$("adminLink").addEventListener("click", e => { e.preventDefault(); openAdmin(); });
+$("loginBack").addEventListener("click", closeAdmin);
+$("viewSite").addEventListener("click", closeAdmin);
+if (location.hash === "#admin") setTimeout(openAdmin, 100);
+
+$("loginForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const email = $("adEmail").value.trim(), pass = $("adPass").value;
+  if (FS && fbAuth){
+    fbAuth.signInWithEmailAndPassword(email, pass)
+      .then(() => { localStorage.setItem(LS.session, "ok"); showDashboard(); toast("Welcome back, Hemal!"); })
+      .catch(err => toast("Login failed: " + err.message, "error"));
+  } else {
+    if (email === DEMO_USER && pass === DEMO_PASS){
+      localStorage.setItem(LS.session, "ok");
+      showDashboard(); toast("Welcome back, Hemal! (demo mode)");
+    } else toast("Invalid credentials — try the demo login below.", "error");
+  }
+});
+$("logoutBtn").addEventListener("click", () => {
+  localStorage.removeItem(LS.session);
+  if (FS && fbAuth) fbAuth.signOut().catch(()=>{});
+  $("adminShell").classList.remove("open");
+  $("adminLogin").style.display = "grid";
+  toast("Logged out.");
+});
+
+/* Tabs */
+document.querySelectorAll(".admin-tab").forEach(tab => tab.addEventListener("click", () => {
+  document.querySelectorAll(".admin-tab").forEach(t => t.classList.remove("active"));
+  tab.classList.add("active");
+  document.querySelectorAll(".admin-panel").forEach(p => p.classList.remove("open"));
+  $("panel-" + tab.dataset.tab).classList.add("open");
+}));
+
+/* Projects CRUD */
+function renderAdminProjects(){
+  const list = $("adminList");
+  if (!projects.length){ list.innerHTML = "<p style='color:var(--muted)'>No projects yet — add your first one!</p>"; return; }
+  list.innerHTML = projects.map(p => `
+    <div class="admin-row">
+      <img class="admin-thumb" src="${esc(p.img)}" alt="" />
+      <div class="admin-row-info">
+        <strong>${esc(p.title)}</strong>
+        <span class="chip">${esc(p.category)}</span>
+      </div>
+      <div class="admin-row-actions">
+        <button class="icon-btn" data-edit="${esc(p.id)}" title="Edit"><i data-lucide="pencil" class="icon" style="width:16px;height:16px"></i></button>
+        <button class="icon-btn danger" data-del="${esc(p.id)}" title="Delete"><i data-lucide="trash-2" class="icon" style="width:16px;height:16px"></i></button>
+      </div>
+    </div>`).join("");
+  icons();
+  list.querySelectorAll("[data-edit]").forEach(b => b.addEventListener("click", () => openProjectModal(b.dataset.edit)));
+  list.querySelectorAll("[data-del]").forEach(b => b.addEventListener("click", () => deleteProject(b.dataset.del)));
+}
+function persistProjectsLocal(){ localStorage.setItem(LS.projects, JSON.stringify(projects)); }
+
+$("addProjectBtn").addEventListener("click", () => openProjectModal(null));
+function openProjectModal(id){
+  editingId = id;
+  pendingProjectImg = null;
+  const p = id ? projects.find(x => x.id === id) : null;
+  $("pmTitle").textContent = p ? "Edit Project" : "Add New Project";
+  $("pfTitle").value = p ? p.title : "";
+  $("pfCat").value = p ? p.category : CATEGORIES[0];
+  $("pfDesc").value = p ? (p.desc||"") : "";
+  $("pfTags").value = p ? (p.tags||[]).join(", ") : "";
+  const prev = $("prevProject");
+  if (p){ prev.src = p.img; prev.style.display = "block"; } else prev.style.display = "none";
+  $("projectModal").classList.add("open");
+  icons();
+}
+function closeAdminModal(){ $("projectModal").classList.remove("open"); }
+$("pmClose").addEventListener("click", closeAdminModal);
+$("projectModal").addEventListener("click", e => { if (e.target === $("projectModal")) closeAdminModal(); });
+
+$("upProject").addEventListener("click", () => $("fileProject").click());
+$("fileProject").addEventListener("change", async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  toast("Processing image…");
+  const dataUrl = await fileToDataURL(file);
+  pendingProjectImg = file;
+  $("prevProject").src = dataUrl;
+  $("prevProject").style.display = "block";
+});
+
+$("projectForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const title = $("pfTitle").value.trim();
+  if (!title) return;
+  toast(pendingProjectImg ? "Uploading image…" : "Saving…");
+  let img = editingId ? (projects.find(x=>x.id===editingId)||{}).img : ("https://picsum.photos/seed/" + encodeURIComponent(title.replace(/\s+/g,'-').toLowerCase()) + "/900/675.jpg");
+  if (pendingProjectImg) img = await storeImage(pendingProjectImg, "portfolio/" + Date.now() + "-" + pendingProjectImg.name.replace(/\s+/g,"_"));
+  const data = {
+    title, category: $("pfCat").value,
+    desc: $("pfDesc").value.trim(),
+    tags: $("pfTags").value.split(",").map(t => t.trim()).filter(Boolean),
+    img
+  };
+  try {
+    if (FS){
+      if (editingId) await db.collection("projects").doc(editingId).set(data, {merge:true});
+      else await db.collection("projects").add({...data, createdAt: Date.now()});
+      await fetchRemote();
+    } else {
+      if (editingId){ const i = projects.findIndex(x=>x.id===editingId); projects[i] = {...projects[i], ...data}; }
+      else projects.unshift({id:"p"+Date.now(), ...data, createdAt: Date.now()});
+      persistProjectsLocal();
+    }
+    renderPortfolio(); renderAdminProjects();
+    closeAdminModal();
+    toast(editingId ? "Project updated!" : "Project added to your portfolio!");
+  } catch(err){ toast("Save failed: " + err.message, "error"); }
+});
+
+async function deleteProject(id){
+  const p = projects.find(x=>x.id===id);
+  if (!p || !confirm(`Delete "${p.title}"? This cannot be undone.`)) return;
+  try {
+    if (FS) await db.collection("projects").doc(id).delete();
+    projects = projects.filter(x => x.id !== id);
+    persistProjectsLocal();
+    renderPortfolio(); renderAdminProjects();
+    toast("Project deleted.");
+  } catch(err){ toast("Delete failed: " + err.message, "error"); }
+}
+
+/* Content editor */
+function fillContentForm(){
+  $("ctBadge").value = content.badge;
+  $("ctLine1").value = content.line1;
+  $("ctAccent").value = content.accent;
+  $("ctHeroText").value = content.heroText;
+  $("ctAbout1").value = content.about1;
+  $("ctAbout2").value = content.about2;
+  $("ctYears").value = content.years;
+  $("ctStatP").value = content.statProjects;
+  $("ctStatC").value = content.statClients;
+  $("ctEmail").value = content.email;
+  $("ctPhone").value = content.phone;
+  $("ctLocation").value = content.location;
+  $("prevProfile").src = content.profileImg;
+  $("prevAbout").src = content.aboutImg;
+}
+function bindUpload(uploadId, fileId, prevId, key){
+  $(uploadId).addEventListener("click", () => $(fileId).click());
+  $(fileId).addEventListener("change", async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    toast("Uploading image…");
+    const url = await storeImage(file, "site/" + key + "-" + Date.now() + "-" + file.name.replace(/\s+/g,"_"));
+    content[key] = url;
+    $(prevId).src = url;
+    toast("Image ready — don't forget to Save Changes!");
+  });
+}
+bindUpload("upProfile", "fileProfile", "prevProfile", "profileImg");
+bindUpload("upAbout", "fileAbout", "prevAbout", "aboutImg");
+
+$("saveContentBtn").addEventListener("click", async () => {
+  content = {
+    ...content,
+    badge: $("ctBadge").value.trim() || content.badge,
+    line1: $("ctLine1").value.trim(),
+    accent: $("ctAccent").value.trim(),
+    heroText: $("ctHeroText").value.trim(),
+    about1: $("ctAbout1").value.trim(),
+    about2: $("ctAbout2").value.trim(),
+    years: $("ctYears").value.trim(),
+    statProjects: +$("ctStatP").value || content.statProjects,
+    statClients: +$("ctStatC").value || content.statClients,
+    email: $("ctEmail").value.trim(),
+    phone: $("ctPhone").value.trim(),
+    location: $("ctLocation").value.trim()
+  };
+  try {
+    if (FS) await db.collection("site").doc("content").set(content, {merge:true});
+    localStorage.setItem(LS.content, JSON.stringify(content));
+    applyContent();
+    toast("Site content saved & published!");
+  } catch(err){ toast("Save failed: " + err.message, "error"); }
+});
+
+/* Messages */
+function renderMessages(){
+  $("msgCount").textContent = messages.length;
+  const list = $("msgList");
+  if (!messages.length){ list.innerHTML = "<p style='color:var(--muted)'>No messages yet.</p>"; return; }
+  list.innerHTML = messages.map(m => `
+    <div class="msg-card">
+      <div class="msg-head">
+        <div><strong>${esc(m.name)}</strong> <small>· ${esc(m.email)}</small></div>
+        <small>${m.date ? new Date(m.date).toLocaleDateString() : ""}</small>
+      </div>
+      <span class="chip">${esc(m.service||"")}</span> <span class="chip" style="background:#f0fff8;color:#0e9f6e">${esc(m.budget||"")}</span>
+      <p>${esc(m.message)}</p>
+    </div>`).join("");
+}
+$("clearMsgs").addEventListener("click", () => {
+  if (!confirm("Clear all messages?")) return;
+  messages = [];
+  localStorage.setItem(LS.messages, "[]");
+  renderMessages();
+  toast("Messages cleared.");
+});
+
+/* ---------- Boot ---------- */
+(async function init(){
+  loadLocal();
+  renderMarquee();
+  applyContent();
+  renderPortfolio();
+  renderAdminProjects();
+  renderMessages();
+  bindFilters();
+  icons();
+  if (FS) await fetchRemote();
+  applyContent();
+  renderPortfolio();
+  renderAdminProjects();
+  renderMessages();
+  icons();
+})();
+</script>
+</body>
+</html>
