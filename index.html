@@ -945,15 +945,17 @@ const firebaseConfig = {
     appId: "1:274280654404:web:1a8b67c1e5cd98b85d3e11",
     measurementId: "G-GPX8FTNZVQ"
   };
-let FS = false, db = null, storage = null, fbAuth = null;
+let FS = false, db = null, fbAuth = null;
+
 if (!firebaseConfig.apiKey.startsWith("YOUR_")) {
   try {
     firebase.initializeApp(firebaseConfig);
     db = firebase.firestore();
-    storage = firebase.storage();
     fbAuth = firebase.auth();
     FS = true;
-  } catch (e) { console.warn("Firebase init failed, using local mode.", e); }
+  } catch (e) {
+    console.warn("Firebase init failed, using local mode.", e);
+  }
 }
 
 /* ---------- Defaults ---------- */
